@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ancay Racing - Preparação Automotiva</title>
+    <style>
+        /* Reset e estilos gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #0a0a0a;
+            color: #f0f0f0;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: #111;
+            padding: 15px 0;
+            border-bottom: 2px solid #ff0000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ff0000;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: #f0f0f0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #ff0000;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            color: #ddd;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #ff0000;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #cc0000;
+        }
+        
+        /* Sobre Nós */
+        .about {
+            padding: 80px 0;
+            background-color: #111;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 36px;
+            color: #ff0000;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #ccc;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Serviços */
+        .services {
+            padding: 80px 0;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: #1a1a1a;
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid #ff0000;
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-card h3 {
+            color: #ff0000;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        .service-card p {
+            color: #ccc;
+        }
+        
+        /* Produtos */
+        .products {
+            padding: 80px 0;
+            background-color: #111;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-image {
+            height: 200px;
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ff0000;
+            font-size: 40px;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-info h3 {
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        
+        /* Depoimentos */
+        .testimonials {
+            padding: 80px 0;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: #1a1a1a;
+            padding: 30px;
+            border-radius: 8px;
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: """;
+            font-size: 60px;
+            color: #ff0000;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            opacity: 0.3;
+        }
+        
+        .testimonial-text {
+            margin-bottom: 20px;
+            font-style: italic;
+            color: #ccc;
+        }
+        
+        .testimonial-author {
+            color: #ff0000;
+            font-weight: bold;
+        }
+        
+        /* Contato */
+        .contact {
+            padding: 80px 0;
+            background-color: #111;
+        }
+        
+        .contact-content {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-info h3 {
+            color: #ff0000;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 10px;
+            color: #ccc;
+        }
+        
+        .contact-form {
+            flex: 1;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #ccc;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 4px;
+            color: #fff;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #0a0a0a;
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid #333;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff0000;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #ff0000;
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            color: #666;
+            width: 100%;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">ANCAY</div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Serviços</a></li>
+                    <li><a href="#products">Produtos</a></li>
+                    <li><a href="#about">Sobre Nós</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>ANCAY RACING</h1>
+            <p>Transformando veículos em máquinas de alta performance</p>
+            <a href="#services" class="btn">SAIBA MAIS →</a>
+        </div>
+    </section>
+
+    <!-- Sobre Nós -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">UN POUCO DA ANCAY RACING</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>No Ancay Racing, a paixão por automóveis vai além do comum e atinge novas dimensões. Especializada em preparação automotiva, a Ancay Racing nasceu com o propósito de transformar veículos em máquinas de alta desempenho, unindo tecnologia, expertise e um olhar meticuloso para cada detalhe.</p>
+                    <p>Seja para elevar o porte do motor, refinar a estética ou adaptar a configuração para diferentes necessidades - de pista, rally ou uso esportivo no dia a dia - na Ancay Racing você encontra soluções personalizadas e de altíssima qualidade.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMci7Vuy1qqSW4tbH7vZNw7Drki4tk0y8EKw&s" alt="Oficina Ancay Racing">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">SERVIÇOS</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Diagnósticos Eletrônicos</h3>
+                    <p>Precisão e eficácia nos diagnósticos com equipamentos de última geração para identificar problemas de forma rápida e precisa.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Mecânica Especializada</h3>
+                    <p>Serviços mecânicos de alta qualidade com profissionais experientes que entendem as necessidades específicas do seu veículo.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Suspensão</h3>
+                    <p>Suspensão precisa para garantir conforto e estabilidade em qualquer condição de pista, com ajustes personalizados.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Produtos -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title">PRODUTOS</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <i>ECU</i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Reprogramação</h3>
+                        <p>Otimização do desempenho do motor através da reprogramação da ECU.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <i>FREIO</i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Discos de Freio</h3>
+                        <p>Discos de freio de alta performance para maior segurança e eficiência.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <i>INTERCOOLER</i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Intercooler</h3>
+                        <p>Intercoolers de alta eficiência para melhorar o desempenho do turbo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">DEPOIMENTOS DOS NOSSOS CLIENTES</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">Excelente serviço! A reprogramação da ECU transformou completamente o desempenho do meu carro. Recomendo muito a Ancay Racing!</p>
+                    <p class="testimonial-author">- João Silva</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">Profissionais extremamente capacitados e atenciosos. Fizeram um trabalho impecável na suspensão do meu carro de rally.</p>
+                    <p class="testimonial-author">- Maria Santos</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">A Ancay Racing é referência em preparação automotiva. Sempre confio meus projetos a eles e nunca me arrependi.</p>
+                    <p class="testimonial-author">- Pedro Oliveira</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">CONTATO</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Entre em Contato</h3>
+                    <p><strong>Email:</strong> AncayRacing@gmail.com</p>
+                    <p><strong>Endereço:</strong> Av. Doldeova, 122 - Orleans, Camibo</p>
+                    <p><strong>Telefone:</strong> (11) 99999-9999</p>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Nome</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">ANCAY</div>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#services">Serviços</a>
+                    <a href="#products">Produtos</a>
+                    <a href="#about">Sobre Nós</a>
+                    <a href="#contact">Contato</a>
+                </div>
+                <div class="copyright">
+                    &copy; 2023 Ancay Racing. Todos os direitos reservados.
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
